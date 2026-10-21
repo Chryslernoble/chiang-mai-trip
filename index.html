@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chiang Mai, but slow · 25–29 Oct 2026</title>
+<meta name="description" content="Three itineraries for 5 days in Chiang Mai, with maps and photos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  --paper:#ecebf7; --dots:#cfcbe6; --surface:#ffffff; --ink:#17163a; --muted:#55527a;
+  --coral:#e8452a; --violet:#6b3fe0; --teal:#00806d; --blue:#2f5bea; --sun:#ffc92e;
+  --sun-ink:#17163a; --hard:#17163a; --tape:rgba(255,201,46,.85);
+  --map:#f7f6ff; --hatch:#b9b3e6;
+  --d25:var(--violet); --d26:var(--coral); --d27:var(--teal); --d28:var(--blue);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#15142b; --dots:#25234a; --surface:#1f1d3d; --ink:#f1efff; --muted:#a9a6d6;
+    --coral:#ff7a5f; --violet:#a58bff; --teal:#3fd0b6; --blue:#7b9cff; --sun:#ffd54f;
+    --hard:#000; --map:#1a1936; --hatch:#35326a; --tape:rgba(255,213,79,.8);
+  }
+}
+html{scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--ink);background-color:var(--paper);
+  background-image:radial-gradient(var(--dots) 1.2px,transparent 1.2px);background-size:20px 20px;
+  font-family:Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.5;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;margin:0;line-height:1.02;letter-spacing:-.02em}
+a{color:inherit}
+button{font-family:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 18px 64px}
+
+/* hero */
+.hero{position:relative;padding:44px 0 26px}
+.hero h1{font-size:clamp(2.6rem,9.5vw,6.4rem);font-weight:800;max-width:11ch}
+.hero h1 span{-webkit-text-stroke:2px var(--ink);color:transparent}
+.hero p{max-width:52ch;margin:18px 0 0;color:var(--muted);font-size:1.05rem}
+.sticker{position:absolute;right:2px;top:26px;width:132px;height:132px;border-radius:50%;background:var(--sun);color:var(--sun-ink);
+  border:2.5px solid var(--hard);box-shadow:5px 5px 0 var(--hard);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transform:rotate(9deg);text-align:center;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;line-height:1.05}
+.sticker b{font-size:1.9rem}
+.sticker small{font:600 .78rem Figtree,sans-serif;margin-top:4px}
+@media (max-width:640px){.sticker{width:96px;height:96px;top:10px}.sticker b{font-size:1.3rem}.sticker small{font-size:.65rem}}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.facts span{background:var(--surface);border:2px solid var(--ink);border-radius:8px;padding:3px 11px;font-size:.88rem;font-weight:500}
+
+/* tabs */
+nav.tabs{display:flex;gap:10px;overflow-x:auto;padding:12px 4px 18px;position:sticky;top:env(safe-area-inset-top,0px);z-index:6;
+  background:linear-gradient(var(--paper) 78%,transparent)}
+nav.tabs button{flex:0 0 auto;border:2.5px solid var(--ink);background:var(--surface);padding:9px 18px;border-radius:999px;
+  font:700 1rem "Bricolage Grotesque",sans-serif;cursor:pointer;box-shadow:3px 3px 0 var(--hard);transition:transform .08s,box-shadow .08s}
+nav.tabs button:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--hard)}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);box-shadow:none;transform:translate(3px,3px)}
+
+.plan-head{margin:4px 0 22px;max-width:70ch}
+.plan-head h2{font-size:clamp(1.8rem,5vw,3rem);font-weight:800}
+.plan-head p{margin:10px 0 0;color:var(--muted);font-size:1.02rem}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.chip{font-size:.84rem;font-weight:600;border:2px solid var(--ink);background:var(--sun);color:var(--sun-ink);padding:2px 11px;border-radius:6px;transform:rotate(-1deg)}
+.chip:nth-child(even){background:var(--surface);color:var(--ink);transform:rotate(1deg)}
+
+.layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:26px;align-items:start}
+@media (max-width:880px){.layout{grid-template-columns:1fr}}
+.left{display:flex;flex-direction:column;gap:26px;position:sticky;top:76px}
+@media (max-width:880px){.left{position:static}}
+
+.panel{background:var(--surface);border:2.5px solid var(--ink);border-radius:14px;box-shadow:6px 6px 0 var(--hard)}
+.mapcard{padding:12px}
+.daybar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.daybar button{border:2px solid var(--ink);background:var(--surface);border-radius:8px;padding:4px 10px;font:600 .84rem Figtree,sans-serif;cursor:pointer;display:flex;align-items:center;gap:6px}
+.daybar button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.dot{width:11px;height:11px;border-radius:50%;display:inline-block;border:1.5px solid var(--ink)}
+svg.map{width:100%;height:auto;display:block;border-radius:8px;background:var(--map);border:2px solid var(--ink)}
+.pin{cursor:pointer}
+.pin text{font:800 12.5px Figtree,sans-serif;fill:#fff;text-anchor:middle;pointer-events:none}
+.pin .ring{fill:none;stroke:var(--ink);stroke-width:3;stroke-dasharray:3 3;opacity:0}
+.pin.sel .ring{opacity:1}
+.pin.dim,.route.dim{opacity:.16}
+.pin .pc{stroke:var(--ink);stroke-width:2.5}
+.maplabel{font:600 10.5px Figtree,sans-serif;fill:var(--muted)}
+.maplabel.script{font:600 17px Caveat,cursive;fill:var(--ink)}
+.mapnote{font-size:.8rem;color:var(--muted);margin:8px 2px 0}
+
+/* polaroid detail */
+.detail{padding:16px 16px 18px;position:relative}
+.polaroid{background:#fff;color:#17163a;border:2px solid var(--ink);padding:10px 10px 0;transform:rotate(-1.2deg);box-shadow:4px 4px 0 var(--hard);position:relative;margin:6px 4px 16px}
+.polaroid::before{content:"";position:absolute;top:-13px;left:50%;width:92px;height:24px;margin-left:-46px;background:var(--tape);transform:rotate(3deg);border:1px solid rgba(0,0,0,.08)}
+.frame{position:relative;aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:62px;border:2px solid #17163a}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.cap{font:600 1.5rem Caveat,cursive;padding:6px 4px 8px;text-align:center;line-height:1.1}
+.switch{display:flex;gap:6px;margin:0 4px 12px}
+.switch button{flex:1;border:2px solid var(--ink);background:var(--surface);padding:6px 8px;border-radius:8px;font:600 .88rem Figtree,sans-serif;cursor:pointer}
+.switch button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.detail h3{font-size:1.45rem;padding:0 4px}
+.detail p{margin:7px 4px 12px;color:var(--muted)}
+.far{display:inline-block;margin:6px 4px 0;background:var(--coral);color:#fff;font-weight:600;font-size:.8rem;padding:2px 9px;border-radius:6px;border:2px solid var(--ink)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;padding:0 4px}
+.btn{display:inline-block;text-decoration:none;font:700 .9rem Figtree,sans-serif;padding:8px 14px;border-radius:9px;border:2px solid var(--ink);background:var(--surface);box-shadow:3px 3px 0 var(--hard)}
+.btn.solid{background:var(--coral);color:#fff}
+.btn:hover{transform:translate(-1px,-1px)}
+
+/* timeline */
+.day{margin-bottom:26px}
+.dayhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.ticket{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);padding:6px 16px 6px 12px;border-radius:8px;font:800 1.1rem "Bricolage Grotesque",sans-serif;transform:rotate(-1deg)}
+.ticket .dot{border-color:var(--paper)}
+.route-btn{font:600 .8rem Figtree,sans-serif;text-decoration:none;border:2px solid var(--ink);border-radius:999px;padding:2px 11px;background:var(--surface)}
+.route-btn:hover{background:var(--sun);color:#17163a}
+.items{list-style:none;margin:0;padding:0 0 0 8px;border-left:3px dashed var(--ink)}
+.item{width:100%;text-align:left;background:none;border:2px solid transparent;padding:9px 12px 9px 16px;cursor:pointer;display:grid;grid-template-columns:106px 1fr;gap:8px;border-radius:10px;position:relative;font:inherit}
+.item::before{content:"";position:absolute;left:-17px;top:16px;width:13px;height:13px;border-radius:50%;background:var(--paper);border:3px solid var(--ink)}
+.item:hover{background:var(--surface);border-color:var(--ink)}
+.item.sel{background:var(--sun);color:#17163a;border-color:var(--ink);box-shadow:3px 3px 0 var(--hard)}
+.item.sel::before{background:var(--coral)}
+.item .t{font-size:.82rem;font-weight:600;opacity:.75;font-variant-numeric:tabular-nums;padding-top:2px}
+.item .x{font-weight:600}
+.item .x em{font-style:normal;display:inline-block;margin-left:7px;font-size:.72rem;font-weight:800;background:var(--ink);color:var(--paper);border-radius:10px;padding:0 7px;vertical-align:1px}
+.item .gym{font-size:.78rem;font-weight:500;opacity:.7;display:block}
+@media (max-width:480px){.item{grid-template-columns:1fr;gap:0}}
+
+.highlight{margin-top:26px;padding:16px 18px;background:var(--sun);color:#17163a;border:2.5px solid var(--ink);border-radius:12px;box-shadow:5px 5px 0 var(--hard);font-weight:500;transform:rotate(-.4deg)}
+.cmp{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{text-align:left;padding:13px 14px;border-bottom:2px solid var(--ink);vertical-align:top}
+th{font:800 1.15rem "Bricolage Grotesque",sans-serif}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700}
+.note{margin-top:22px;padding:14px 18px;border:2.5px dashed var(--ink);border-radius:12px;color:var(--muted);font-size:.92rem;background:var(--surface)}
+.note b{color:var(--ink)}
+.note ul{margin:8px 0 0;padding-left:20px}
+footer{margin-top:34px;color:var(--muted);font-size:.85rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* travel estimates */
+.dsum{font-size:.8rem;color:var(--muted)}
+.leg{list-style:none;padding:2px 8px 2px 16px;font-size:.78rem;color:var(--muted)}
+.travel{padding:18px;margin-top:26px}
+.travel h3{font-size:1.6rem;margin-bottom:6px}
+.tsub{margin:0 0 14px;color:var(--muted);font-size:.92rem;max-width:70ch}
+.tw{overflow-x:auto}
+.travel table{min-width:520px;font-size:.9rem}
+.travel th,.travel td{padding:9px 10px}
+.travel tfoot td{font-weight:700;border-top:2px solid var(--ink);border-bottom:0}
+.topts{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
+.topts li{padding:10px 12px;border:1.5px solid var(--ink)}
+.topts li.best{background:var(--sun,var(--ink));color:var(--sun-ink,var(--bg))}
+.tnote{margin:14px 0 0;font-size:.8rem;color:var(--muted);max-width:90ch}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="sticker" aria-hidden="true"><b>25–29</b><small>October 2026</small></div>
+    <h1>Chiang Mai, <span>but slow.</span></h1>
+    <p>Three ways to spend five days: waterfalls, pottery, night markets and coffee. Pick a plan, tap a stop, see the place.</p>
+    <div class="facts"><span>5 days, 4 nights</span><span>Main days 26–28 Oct</span><span>2 gym sessions</span><span>Arrive Sun, leave Thu</span></div>
+  </header>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Plans"></nav>
+  <main id="main"></main>
+
+  <footer>Map positions are approximate. Check opening hours and trail conditions before you go, especially after rain in late October. <a href="mono.html">Switch to the monochrome version</a></footer>
+</div>
+
+<script>
+/* ============ PHOTOS ============
+   Put photos in the /images folder, named after the place id below
+   (for example images/mon.jpg for Monthathan Waterfall).
+   If a photo is missing, the page shows the illustrated tile instead. */
+var PHOTO_DIR = "images/";
+var PHOTO_EXT = ".jpg";
+
+var PLACES = {
+  tha:   {name:"Tha Phae Gate & Sunday Walking Street", lat:18.7877, lon:98.9932, icon:"🏮", hue:[38,92], q:"Tha Phae Gate", cap:"Sunday night, lanterns on", note:"Chiang Mai’s old east gate. On Sundays the Ratchadamnoen road becomes a long night market with food, crafts and music. A relaxed first evening."},
+  pds:   {name:"Pha Dok Siew Nature Trail, Doi Inthanon", far:"Doi Inthanon, about 100 km south-west", icon:"🌲", hue:[150,60], q:"Pha Dok Siew Nature Trail Doi Inthanon", cap:"The big forest day", note:"A forest trail high on Doi Inthanon, Thailand’s tallest mountain. About 3–4 km depending on the route. This is the only long drive in Plan A, so start early."},
+  mkl:   {name:"Ban Mae Klang Luang coffee", far:"Doi Inthanon, about 100 km south-west", icon:"☕", hue:[28,70], q:"Ban Mae Klang Luang", cap:"Mountain coffee stop", note:"A Karen hill village known for its coffee. A good slow stop on the way back down."},
+  huen:  {name:"Huen Muan Jai, Northern Thai dinner", icon:"🍲", hue:[18,80], q:"Huen Muan Jai restaurant", cap:"Northern Thai dinner", note:"Northern Thai food for a proper dinner. Use the Google Maps button for the exact spot."},
+  bkw:   {name:"Baan Kang Wat", lat:18.7757, lon:98.9477, icon:"🏺", hue:[24,75], q:"Baan Kang Wat", cap:"Artists’ village", note:"A small artists’ village of studios, cafes and craft shops beside a temple. Open Tuesday to Sunday, 10:00–18:00, and closed Mondays, so it sits on the 27th in every plan."},
+  pot:   {name:"Pottery workshop", icon:"🫖", hue:[16,60], q:"pottery workshop Baan Kang Wat", cap:"Hands in the clay", note:"A hands-on ceramics session. Book ahead, since small studios often take only a few people at a time."},
+  kalm:  {name:"Kalm Village", icon:"🌿", hue:[110,40], q:"Kalm Village", cap:"Garden cafe corner", note:"A garden-style creative space with cafes, craft and gallery corners. Easy to wander without a plan."},
+  cpk:   {name:"Chang Phueak Gate food market", lat:18.7960, lon:98.9865, icon:"🍢", hue:[8,80], q:"Chang Phueak Gate night market", cap:"Street food grazing", note:"A busy evening street-food market at the north gate. Local, cheap and good for grazing."},
+  mon:   {name:"Monthathan Waterfall", lat:18.8155, lon:98.9410, icon:"💧", hue:[195,60], q:"Monthathan Waterfall", cap:"Shady morning waterfall", note:"A forest waterfall on the Doi Suthep side of the city. Short and shady, good for a morning visit. Check the path after rain."},
+  nim:   {name:"Nimman cafes & brunch", lat:18.7990, lon:98.9680, icon:"🥐", hue:[330,50], q:"Nimmanhaemin cafe", cap:"Brunch district", note:"The trendy west side of town with specialty coffee, brunch spots and boutiques."},
+  nb:    {name:"Night Bazaar & live music", lat:18.7835, lon:99.0000, icon:"🎶", hue:[265,50], q:"Chiang Mai Night Bazaar", cap:"Last night out", note:"A big evening market with food, souvenirs and bars with live music nearby."},
+  htt:   {name:"Huay Tueng Tao Waterfall & reservoir", lat:18.8570, lon:98.9360, icon:"🌊", hue:[175,55], q:"Huay Tueng Tao", cap:"Reservoir day", note:"A reservoir with bamboo huts, lakeside food and a nearby waterfall trail. Confirm the trailhead and the real trail length before you go."},
+  mae:   {name:"Cafes around Mae Rim", lat:18.9100, lon:98.9400, icon:"🌳", hue:[95,45], q:"cafe Mae Rim", cap:"Valley cafe hop", note:"A district north of the city with garden and valley cafes. This pin marks the general area, not one cafe."},
+  mee:   {name:"Mee Chok Market", icon:"🛍️", hue:[355,70], q:"Mee Chok market", cap:"Local market night", note:"A local market, open Monday and Tuesday evenings, 17:00–21:00 per its published schedule. A different feel from the Sunday walking street."},
+  war:   {name:"Warorot Market & Chang Moi", lat:18.7907, lon:99.0002, icon:"🧺", hue:[45,80], q:"Warorot Market", cap:"Old city market life", note:"The old city’s big local market and the Chang Moi neighbourhood around it. Snacks, textiles and street life."},
+  spec:  {name:"Specialty coffee & brunch", icon:"☕", hue:[30,55], q:"specialty coffee brunch", cap:"Slow coffee start", note:"A slow start with good coffee. Pick any highly rated spot near the old city."},
+  hann:  {name:"Hann Thueng Chiang Mai", icon:"🍜", hue:[15,75], q:"ฮ้านถึงเจียงใหม่", cap:"Local lunch", note:"A local place for northern Thai dishes."},
+  dinner:{name:"Atmospheric dinner", icon:"🍷", hue:[320,40], q:"best dinner restaurant old city", cap:"Candlelit dinner", note:"Choose a restaurant with a nice setting, or head to the Night Bazaar instead."},
+  lake:  {name:"Lakeside lunch at Huay Tueng Tao", lat:18.8545, lon:98.9380, icon:"🍤", hue:[200,45], q:"Huay Tueng Tao lakeside restaurant", cap:"Lunch on the water", note:"Eat on the water in a bamboo hut, then rest before the evening."}
+};
+
+var DAYS = {
+  d25:{label:"Sun 25 Oct", color:"var(--d25)"},
+  d26:{label:"Mon 26 Oct", color:"var(--d26)"},
+  d27:{label:"Tue 27 Oct", color:"var(--d27)"},
+  d28:{label:"Wed 28 Oct", color:"var(--d28)"}
+};
+var DAYKEYS = ["d25","d26","d27","d28"];
+
+var PLANS = {
+ a:{
+  title:"Plan A: Forest Escape & Creative City",
+  desc:"One full day of beautiful hiking, then a relaxed, hip city for the rest. Best if you want one proper trail day.",
+  chips:["Pha Dok Siew trail","Baan Kang Wat","Craft & pottery","Gym x2"],
+  high:"Highlight: one full day on a beautiful trail, then time for the city and a workshop without rushing.",
+  days:{
+   d25:[{time:"Evening",text:"Check in, then Tha Phae Walking Street",p:"tha"}],
+   d26:[{time:"07:00–16:30",text:"Pha Dok Siew trail, Doi Inthanon",p:"pds"},
+        {time:"On the way back",text:"Coffee at Ban Mae Klang Luang",p:"mkl"},
+        {time:"18:30",text:"Northern Thai dinner at Huen Muan Jai",p:"huen"}],
+   d27:[{time:"09:00–10:15",text:"Gym 1: Upper Body",gym:true},
+        {time:"11:30–14:30",text:"Baan Kang Wat and pottery workshop",p:"bkw"},
+        {time:"15:00–17:00",text:"Kalm Village or an old-town cafe",p:"kalm"},
+        {time:"19:00",text:"Chang Phueak Gate food market",p:"cpk"}],
+   d28:[{time:"08:30–10:00",text:"Monthathan Waterfall",p:"mon"},
+        {time:"11:00–13:00",text:"Brunch and cafes in Nimman",p:"nim"},
+        {time:"15:30–16:30",text:"Gym 2: Core & Accessories",gym:true},
+        {time:"18:30",text:"Night Bazaar or live music",p:"nb"}]
+  }},
+ b:{
+  title:"Plan B: Outdoor Adventure & Local Life",
+  desc:"For people who like doing things but do not want a long drive to Doi Inthanon. Two waterfalls close to town, plus local markets.",
+  chips:["Huay Tueng Tao","Monthathan","Mee Chok market","Gym x2"],
+  high:"Highlight: two nature spots close to the city, no long drive, and a local market that feels different from the Sunday walking street.",
+  days:{
+   d25:[{time:"Evening",text:"Check in, then Tha Phae Walking Street",p:"tha"}],
+   d26:[{time:"08:00–11:00",text:"Waterfall trail at Huay Tueng Tao",p:"htt"},
+        {time:"12:00",text:"Lunch by the reservoir",p:"lake"},
+        {time:"14:00",text:"Cafes around Mae Rim",p:"mae"},
+        {time:"18:00–20:00",text:"Mee Chok Market (open Mon–Tue evenings)",p:"mee"}],
+   d27:[{time:"09:00–10:15",text:"Gym 1: Upper Body",gym:true},
+        {time:"11:30–14:00",text:"Baan Kang Wat and craft shops",p:"bkw"},
+        {time:"15:00–16:30",text:"Pottery workshop",p:"pot"},
+        {time:"19:00",text:"Local Northern Thai restaurant",p:"huen"}],
+   d28:[{time:"08:30–10:00",text:"Monthathan Waterfall",p:"mon"},
+        {time:"11:00–13:00",text:"Cafe hopping and lunch",p:"nim"},
+        {time:"16:00–17:00",text:"Gym 2: Core & Mobility",gym:true},
+        {time:"19:00",text:"Night Bazaar or live-music bar",p:"nb"}]
+  }},
+ c:{
+  title:"Plan C: Slow Nature, Art & Hidden Food",
+  desc:"The easiest pace. Live like a local rather than ticking off famous sights, with nature, cafes, art and good food and no long drives.",
+  chips:["Monthathan","Chang Moi","Hidden restaurants","Gym x2"],
+  high:"Highlight: more of Chiang Mai life than famous spots. Nature, cafes, art and local food, with no long drive.",
+  days:{
+   d25:[{time:"Evening",text:"Check in, then Tha Phae Walking Street",p:"tha"}],
+   d26:[{time:"08:30–10:00",text:"Monthathan Waterfall",p:"mon"},
+        {time:"11:00–13:00",text:"Specialty coffee and brunch",p:"spec"},
+        {time:"14:00–15:00",text:"Gym 1: Upper Body",gym:true},
+        {time:"17:30",text:"Warorot Market and Chang Moi",p:"war"},
+        {time:"19:00",text:"Local restaurant",p:"hann"}],
+   d27:[{time:"10:00–12:00",text:"Baan Kang Wat",p:"bkw"},
+        {time:"12:30",text:"Lunch at Hann Thueng Chiang Mai",p:"hann"},
+        {time:"14:00–16:00",text:"Kalm Village, gallery and craft",p:"kalm"},
+        {time:"18:30",text:"Chang Phueak Gate market",p:"cpk"}],
+   d28:[{time:"08:30–11:30",text:"Huay Tueng Tao Waterfall trail",p:"htt"},
+        {time:"12:00–14:00",text:"Lakeside lunch and rest",p:"lake"},
+        {time:"16:30–17:30",text:"Gym 2: Light Full Body",gym:true},
+        {time:"19:00",text:"Dinner somewhere atmospheric, or Night Bazaar",p:"dinner"}]
+  }}
+};
+
+var COMPARE = [
+ ["Hiking","Pha Dok Siew + Monthathan","Huay Tueng Tao + Monthathan","Monthathan + Huay Tueng Tao"],
+ ["Gym","2 days","2 days","2 days"],
+ ["Art & craft","A lot","Some","A lot"],
+ ["Markets & food","A lot","A lot","A lot"],
+ ["Long drive","1 day","None","None"],
+ ["Effort","Medium to high","Medium","Low to medium"]
+];
+
+/* ============ HELPERS ============ */
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function qfull(p){return p.q+" Chiang Mai Thailand";}
+function mapsUrl(p){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(qfull(p));}
+function photoUrl(p){return "https://www.google.com/search?tbm=isch&q="+encodeURIComponent(qfull(p));}
+function embedUrl(p){return "https://maps.google.com/maps?q="+encodeURIComponent(qfull(p))+"&z=14&output=embed";}
+function dayRouteUrl(plan,d){
+  var qs=(plan.days[d]||[]).filter(function(it){return it.p;}).map(function(it){return qfull(PLACES[it.p]);});
+  var uniq=qs.filter(function(q,i){return qs.indexOf(q)===i;});
+  if(uniq.length<2) return null;
+  var u="https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(uniq[0])+"&destination="+encodeURIComponent(uniq[uniq.length-1]);
+  if(uniq.length>2) u+="&waypoints="+encodeURIComponent(uniq.slice(1,-1).join("|"));
+  return u;
+}
+var state = {plan:"a", day:"all", sel:null, view:"photo"};
+
+/* ============ TRAVEL ESTIMATES ============
+   Edit these numbers to match real quotes. All amounts in Thai baht. */
+var CFG={
+  grabBase:40, grabPerKm:11, grabMin:60,       /* rough guess for a Grab car ride: base + per km */
+  grabLowF:0.8, grabHighF:1.3,                 /* low / high band around the Grab estimate */
+  carDayLow:900, carDayMid:1200, carDayHigh:1600, /* economy rental car per day */
+  fuelPerL:38, kmPerL:12,
+  roadFactor:1.35,                              /* straight-line km to road km */
+  defKm:4, defMin:15,                           /* hop between stops that have no map pin */
+  farKm:106, farMin:115, nearFarKm:15, nearFarMin:30  /* Doi Inthanon */
+};
+var HOTEL={lat:18.7883,lon:98.9853,name:"hotel"};
+function hav(a,b){var R=6371,t=Math.PI/180,dl=(b.lat-a.lat)*t,dn=(b.lon-a.lon)*t;
+  var x=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a.lat*t)*Math.cos(b.lat*t)*Math.sin(dn/2)*Math.sin(dn/2);
+  return 2*R*Math.asin(Math.sqrt(x));}
+function r5(m){return Math.max(5,Math.round(m/5)*5);}
+function legBetween(a,b){
+  if(a.far&&b.far) return {km:CFG.nearFarKm,min:CFG.nearFarMin,est:true};
+  if(a.far||b.far) return {km:CFG.farKm,min:CFG.farMin,est:false};
+  if(a.lat!=null&&b.lat!=null){
+    var km=Math.max(1,hav(a,b)*CFG.roadFactor);
+    var min=km<=12?km/20*60+3:km/35*60+3;
+    return {km:Math.round(km*10)/10,min:r5(min),est:false};
+  }
+  return {km:CFG.defKm,min:CFG.defMin,est:true};
+}
+function kmTxt(k){return k>=20?String(Math.round(k)):String(Math.round(k*10)/10);}
+function timeTxt(m){m=Math.round(m); if(m<60) return m+" min"; var h=Math.floor(m/60), r=m%60; return h+"h"+(r?" "+(r<10?"0":"")+r+"m":"");}
+function money(n){return "฿"+(Math.round(n/50)*50).toLocaleString("en-US");}
+function dayStats(plan,d){
+  var stops=(plan.days[d]||[]).filter(function(it){return it.p;}).map(function(it){return PLACES[it.p];});
+  var o={km:0,min:0,grab:0,fuel:0,far:false,n:stops.length};
+  if(!stops.length) return o;
+  var seq=[HOTEL].concat(stops,[HOTEL]);
+  for(var i=0;i<seq.length-1;i++){
+    var l=legBetween(seq[i],seq[i+1]);
+    o.km+=l.km; o.min+=l.min; o.grab+=Math.max(CFG.grabMin,CFG.grabBase+CFG.grabPerKm*l.km);
+    if(l.km>=50) o.far=true;
+  }
+  o.fuel=o.km/CFG.kmPerL*CFG.fuelPerL;
+  return o;
+}
+function dnum(d){return d.slice(1);}
+function rangeText(r){return r.length===1?dnum(r[0])+" Oct":dnum(r[0])+"–"+dnum(r[r.length-1])+" Oct";}
+function planSummary(key){
+  var plan=PLANS[key], st={};
+  DAYKEYS.forEach(function(d){st[d]=dayStats(plan,d);});
+  var rent=["d26","d27","d28"], ranges=[[]];
+  for(var i=0;i<3;i++)for(var j=i;j<3;j++)ranges.push(rent.slice(i,j+1));
+  function cost(r,m){
+    var gf=m==="low"?CFG.grabLowF:m==="high"?CFG.grabHighF:1;
+    var cd=m==="low"?CFG.carDayLow:m==="high"?CFG.carDayHigh:CFG.carDayMid;
+    var c=st.d25.grab*gf, ok=true;
+    rent.forEach(function(d){ if(r.indexOf(d)>-1) c+=st[d].fuel; else { if(st[d].far) ok=false; c+=st[d].grab*gf; } });
+    return ok?c+r.length*cd:null;
+  }
+  var opts=ranges.map(function(r){return {days:r,low:cost(r,"low"),mid:cost(r,"mid"),high:cost(r,"high")};}).filter(function(o){return o.mid!=null;});
+  var best=opts.reduce(function(a,b){return b.mid<a.mid?b:a;});
+  var allGrab=opts.filter(function(o){return o.days.length===0;})[0]||null;
+  var allCar=opts.filter(function(o){return o.days.length===3;})[0];
+  var km=0,min=0; DAYKEYS.forEach(function(d){km+=st[d].km;min+=st[d].min;});
+  var bestText=best.days.length===0?"Grab only":"Rent a car "+rangeText(best.days)+(best.days.length<3?", Grab the rest":"");
+  return {st:st,km:km,min:min,best:best,bestText:bestText,allGrab:allGrab,allCar:allCar};
+}
+function legRow(l,label){
+  return '<li class="leg">↓ '+label+': ≈ '+kmTxt(l.km)+' km · '+timeTxt(l.min)+(l.est?' (rough)':'')+'</li>';
+}
+function dayIcon(d){return typeof shape==="function"?shape(d):'<span class="dot" style="background:'+DAYS[d].color+'"></span>';}
+
+function renderTravel(key){
+  var S=planSummary(key), plan=PLANS[key];
+  var h='<section class="panel travel"><h3>Car or Grab?</h3><p class="tsub">Rough estimates for getting between stops, starting and ending each day at your hotel (assumed to be in or near the Old City).</p>';
+  h+='<div class="tw"><table><thead><tr><th>Day</th><th>Road km</th><th>Time on road</th><th>Grab</th><th>Car fuel</th></tr></thead><tbody>';
+  DAYKEYS.forEach(function(d){
+    var s=S.st[d];
+    if(!s.n){h+='<tr><td>'+DAYS[d].label+'</td><td colspan="4">Gym only, no rides</td></tr>';return;}
+    h+='<tr><td>'+DAYS[d].label+'</td><td>≈ '+kmTxt(s.km)+'</td><td>'+timeTxt(s.min)+'</td><td>'
+      +(s.far?'Not practical (long hill trip)':money(s.grab*CFG.grabLowF)+"–"+money(s.grab*CFG.grabHighF))+'</td><td>'+money(s.fuel)+'</td></tr>';
+  });
+  h+='</tbody><tfoot><tr><td>Total</td><td>≈ '+kmTxt(S.km)+'</td><td>'+timeTxt(S.min)+'</td><td></td><td></td></tr></tfoot></table></div>';
+  h+='<ul class="topts">';
+  h+='<li><b>Grab only:</b> '+(S.allGrab?money(S.allGrab.low)+"–"+money(S.allGrab.high):"not practical, because the Doi Inthanon day is a ~"+CFG.farKm+" km trip each way and a driver is unlikely to wait for you")+'</li>';
+  h+='<li><b>Rent a car 26–28 Oct (3 days):</b> '+money(S.allCar.low)+"–"+money(S.allCar.high)+' including fuel, with Grab for Sunday evening</li>';
+  h+='<li class="best"><b>Cheapest on paper: '+esc(S.bestText)+'</b> '+money(S.best.low)+"–"+money(S.best.high)+'</li></ul>';
+  h+='<p class="tnote">How these are worked out: city stops use straight-line distance × '+CFG.roadFactor+'; stops with no map pin count as a '+CFG.defKm+' km / '+CFG.defMin+' min hop; Doi Inthanon is about '+CFG.farKm+' km and 1h 55m each way from the city. '
+   +'Grab is a rough guess of ฿'+CFG.grabBase+' + ฿'+CFG.grabPerKm+'/km per ride, so check the app and expect higher prices in rain or rush hour. '
+   +'Car rental uses ฿'+CFG.carDayLow+'–'+CFG.carDayHigh.toLocaleString("en-US")+' a day (booking sites show roughly US$25–45 a day for an economy car), plus fuel at ฿'+CFG.fuelPerL+'/L and '+CFG.kmPerL+' km/L. Parking, insurance extras and deposits are not included. '
+   +'Short hops under 2 km are easy to walk, and the gym is assumed to be near your hotel.</p></section>';
+  return h;
+}
+
+/* ============ MAP ============ */
+function buildMap(plan){
+  var W=700,H=470,pad=46,pts=[];
+  DAYKEYS.forEach(function(d){(plan.days[d]||[]).forEach(function(it){var p=it.p&&PLACES[it.p]; if(p&&p.lat!=null) pts.push(p);});});
+  var lats=pts.map(function(p){return p.lat;}), lons=pts.map(function(p){return p.lon;});
+  var minLat=Math.min.apply(null,lats.concat([18.7745])), maxLat=Math.max.apply(null,lats.concat([18.7995]));
+  var minLon=Math.min.apply(null,lons.concat([98.9740])), maxLon=Math.max.apply(null,lons.concat([99.0060]));
+  var kx=Math.cos(18.8*Math.PI/180), sw=(maxLon-minLon)*kx, sh=maxLat-minLat;
+  var s=Math.min((W-2*pad)/sw,(H-2*pad)/sh), ox=(W-sw*s)/2, oy=(H-sh*s)/2;
+  function X(lon){return ox+(lon-minLon)*kx*s;} function Y(lat){return oy+(maxLat-lat)*s;}
+  var svg='<svg class="map" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Sketch map of the plan"><defs><pattern id="hatch" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="9" stroke="var(--hatch)" stroke-width="2"/></pattern></defs>';
+  var hx=Math.max(X(98.9650),70);
+  svg+='<rect x="0" y="0" width="'+hx+'" height="'+H+'" fill="url(#hatch)" opacity=".7"/>';
+  svg+='<text class="maplabel script" x="14" y="28">Doi Suthep hills</text>';
+  var mx=X(98.9770),my=Y(18.7975),mw=X(98.9935)-mx,mh=Y(18.7770)-my;
+  svg+='<rect x="'+mx+'" y="'+my+'" width="'+mw+'" height="'+mh+'" rx="5" fill="var(--surface)" fill-opacity=".6" stroke="var(--ink)" stroke-width="2.5" stroke-dasharray="7 5"/>';
+  svg+='<text class="maplabel script" x="'+(mx+mw/2)+'" y="'+(my+mh/2+5)+'" text-anchor="middle">Old City</text>';
+  svg+='<g transform="translate('+(W-34)+',36)"><path d="M0,-16 L7,8 L0,3 L-7,8 Z" fill="var(--ink)"/><text class="maplabel" y="24" text-anchor="middle">N</text></g>';
+  DAYKEYS.forEach(function(d){
+    var arr=(plan.days[d]||[]).map(function(it){return it.p&&PLACES[it.p];}).filter(function(p){return p&&p.lat!=null;});
+    if(arr.length>1){
+      var dd=arr.map(function(p,i){return (i?'L':'M')+X(p.lon).toFixed(1)+','+Y(p.lat).toFixed(1);}).join(' ');
+      svg+='<path class="route" data-day="'+d+'" d="'+dd+'" fill="none" stroke="'+DAYS[d].color+'" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>';
+    }
+  });
+  var n=0, far=[];
+  DAYKEYS.forEach(function(d){(plan.days[d]||[]).forEach(function(it,i){
+    if(!it.p) return; var p=PLACES[it.p]; n++; var id=d+"-"+i;
+    if(p.lat==null){ if(p.far) far.push({id:id,n:n,d:d,p:p}); return; }
+    svg+=pinSvg(id,d,n,p,X(p.lon),Y(p.lat));
+  });});
+  if(far.length){
+    svg+='<text class="maplabel script" x="14" y="'+(H-66)+'">↙ about 100 km south-west: Doi Inthanon</text>';
+    far.forEach(function(f,i){ svg+=pinSvg(f.id,f.d,f.n,f.p,32+i*36,H-34); });
+  }
+  return svg+'</svg>';
+}
+function pinSvg(id,d,n,p,x,y){
+  return '<g class="pin" data-id="'+id+'" data-day="'+d+'" tabindex="0" role="button" aria-label="'+esc(p.name)+'" transform="translate('+x.toFixed(1)+','+y.toFixed(1)+')">'
+   +'<circle class="ring" r="18"/><circle cx="2" cy="2" r="12" fill="var(--hard)"/><circle class="pc" r="12" fill="'+DAYS[d].color+'"/><text y="4.5">'+n+'</text></g>';
+}
+
+/* ============ RENDER ============ */
+function renderTabs(){
+  var t=document.getElementById("tabs");
+  t.innerHTML=[["a","Plan A"],["b","Plan B"],["c","Plan C"],["cmp","Compare"]].map(function(x){
+    return '<button role="tab" data-k="'+x[0]+'" aria-selected="'+(state.plan===x[0])+'">'+x[1]+'</button>';}).join("");
+  t.querySelectorAll("button").forEach(function(b){b.onclick=function(){go(b.getAttribute("data-k"));};});
+}
+function go(k){
+  state.plan=k; state.day="all"; state.sel=null; state.view="photo";
+  try{history.replaceState(null,"","#"+(k==="cmp"?"compare":"plan-"+k));}catch(e){}
+  render();
+}
+function render(){
+  renderTabs();
+  var m=document.getElementById("main");
+  if(state.plan==="cmp"){ m.innerHTML=renderCompare(); return; }
+  var plan=PLANS[state.plan];
+  var h='<div class="plan-head"><h2>'+esc(plan.title)+'</h2><p>'+esc(plan.desc)+'</p><div class="chips">'
+    +plan.chips.map(function(c){return '<span class="chip">'+esc(c)+'</span>';}).join("")+'</div></div>';
+  h+='<div class="layout"><div class="left"><div class="panel mapcard"><div class="daybar" id="daybar"></div><div id="mapbox"></div>'
+    +'<p class="mapnote">Sketch map, positions approximate. Pins are numbered in visiting order and coloured by day.</p></div>'
+    +'<div class="panel detail" id="detail"></div></div><div id="days"></div></div>';
+  h+='<div class="highlight">'+esc(plan.high)+'</div>';
+  h+=renderTravel(state.plan);
+  h+='<div class="note"><b>Before you go</b><ul>'
+   +'<li>Baan Kang Wat is open Tue–Sun, 10:00–18:00 and closed on Mondays, so it is on the 27th in every plan.</li>'
+   +'<li>Check rain and trail status before any waterfall walk, especially in late October.</li>'
+   +'<li>Plan A: Pha Dok Siew is about 3–4 km depending on the route. Plans B and C: confirm the Huay Tueng Tao start point and real distance first.</li></ul></div>';
+  m.innerHTML=h;
+  renderDayBar(); renderMap(); renderDays(); renderDetail();
+}
+function renderDayBar(){
+  var bar=document.getElementById("daybar");
+  var h='<button aria-pressed="'+(state.day==="all")+'" data-d="all">All days</button>';
+  DAYKEYS.forEach(function(d){h+='<button aria-pressed="'+(state.day===d)+'" data-d="'+d+'"><span class="dot" style="background:'+DAYS[d].color+'"></span>'+DAYS[d].label+'</button>';});
+  bar.innerHTML=h;
+  bar.querySelectorAll("button").forEach(function(b){b.onclick=function(){state.day=b.getAttribute("data-d");renderDayBar();applyFilter();renderDays();};});
+}
+function renderMap(){
+  var box=document.getElementById("mapbox");
+  box.innerHTML=buildMap(PLANS[state.plan]);
+  box.querySelectorAll(".pin").forEach(function(g){
+    var f=function(){select(g.getAttribute("data-id"));};
+    g.onclick=f; g.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();f();}};
+  });
+  applyFilter();
+}
+function applyFilter(){
+  document.querySelectorAll("#mapbox [data-day]").forEach(function(el){
+    el.classList.toggle("dim",state.day!=="all"&&el.getAttribute("data-day")!==state.day);
+  });
+  document.querySelectorAll("#mapbox .pin").forEach(function(g){g.classList.toggle("sel",g.getAttribute("data-id")===state.sel);});
+}
+function renderDays(){
+  var plan=PLANS[state.plan], n=0, h="";
+  DAYKEYS.forEach(function(d){
+    var show=state.day==="all"||state.day===d, rows="", prev=HOTEL, prevName="from hotel";
+    (plan.days[d]||[]).forEach(function(it,i){
+      var id=d+"-"+i, num="";
+      if(it.p){n++; num='<em>'+n+'</em>';}
+      if(!show) return;
+      if(it.p){ rows+=legRow(legBetween(prev,PLACES[it.p]),prevName); prev=PLACES[it.p]; prevName="from "+PLACES[it.p].name; }
+      rows+='<li><button class="item'+(state.sel===id?' sel':'')+'" data-id="'+id+'"'+(it.gym?' data-gym="1"':'')+'><span class="t">'+esc(it.time)+'</span>'
+        +'<span class="x">'+esc(it.text)+num+(it.gym?'<span class="gym">Gym session, no map pin</span>':'')+'</span></button></li>';
+    });
+    if(show){
+      if(prev!==HOTEL) rows+=legRow(legBetween(prev,HOTEL),"back to hotel");
+      var s=dayStats(plan,d), ru=dayRouteUrl(plan,d);
+      h+='<div class="day"><div class="dayhead"><span class="ticket">'+dayIcon(d)+DAYS[d].label+'</span>'
+        +(s.n?'<span class="dsum">≈ '+kmTxt(s.km)+' km · '+timeTxt(s.min)+' on the road</span>':'')
+        +(ru?'<a class="route-btn" target="_blank" rel="noopener" href="'+ru+'">Open day route in Google Maps</a>':'')+'</div><ul class="items">'+rows+'</ul></div>';
+    }
+  });
+  var w=document.getElementById("days"); w.innerHTML=h;
+  w.querySelectorAll(".item").forEach(function(b){b.onclick=function(){ if(!b.getAttribute("data-gym")) select(b.getAttribute("data-id")); };});
+}
+function findItem(id){ if(!id) return null; var a=id.split("-"); return (PLANS[state.plan].days[a[0]]||[])[+a[1]]||null; }
+function select(id){
+  state.sel=id; state.view="photo";
+  document.querySelectorAll("#days .item").forEach(function(b){b.classList.toggle("sel",b.getAttribute("data-id")===id);});
+  applyFilter(); renderDetail();
+  if(window.matchMedia("(max-width:880px)").matches){var d=document.getElementById("detail"); if(d) d.scrollIntoView({behavior:"smooth",block:"nearest"});}
+}
+function renderDetail(){
+  var el=document.getElementById("detail");
+  var it=findItem(state.sel), key=it&&it.p, p=key&&PLACES[key];
+  if(!p){
+    el.innerHTML='<h3>Pick a stop</h3><p>Tap an item on the list or a pin on the map to see the place, then open it in Google Maps or look at photos.</p>';
+    return;
+  }
+  var bg='linear-gradient(135deg,hsl('+p.hue[0]+','+p.hue[1]+'%,76%),hsl('+((p.hue[0]+40)%360)+','+p.hue[1]+'%,56%))';
+  var frame;
+  if(state.view==="map"){
+    frame='<div class="frame"><iframe loading="lazy" title="Map of '+esc(p.name)+'" referrerpolicy="no-referrer-when-downgrade" src="'+embedUrl(p)+'"></iframe></div>';
+  } else {
+    frame='<div class="frame" style="background:'+bg+'"><span aria-hidden="true">'+p.icon+'</span>'
+      +'<img alt="'+esc(p.name)+'" src="'+PHOTO_DIR+key+PHOTO_EXT+'" onerror="this.remove()"></div>';
+  }
+  el.innerHTML='<div class="polaroid">'+frame+'<div class="cap">'+esc(p.cap)+'</div></div>'
+   +'<div class="switch"><button data-v="photo" aria-pressed="'+(state.view!=="map")+'">Photo</button><button data-v="map" aria-pressed="'+(state.view==="map")+'">Live map</button></div>'
+   +'<h3>'+esc(p.name)+'</h3>'+(p.far?'<span class="far">'+esc(p.far)+'</span>':'')+'<p>'+esc(p.note)+'</p>'
+   +'<div class="btns"><a class="btn solid" target="_blank" rel="noopener" href="'+mapsUrl(p)+'">Open in Google Maps</a>'
+   +'<a class="btn" target="_blank" rel="noopener" href="'+photoUrl(p)+'">More photos</a></div>';
+  el.querySelectorAll(".switch button").forEach(function(b){b.onclick=function(){state.view=b.getAttribute("data-v");renderDetail();};});
+}
+function renderCompare(){
+  var sums=["a","b","c"].map(planSummary), rows=COMPARE.slice();
+  rows.push(["Road distance (est.)"].concat(sums.map(function(s){return "≈ "+kmTxt(s.km)+" km";})));
+  rows.push(["Time on the road (est.)"].concat(sums.map(function(s){return timeTxt(s.min);})));
+  rows.push(["Cheapest way on paper"].concat(sums.map(function(s){return s.bestText+" ("+money(s.best.low)+"–"+money(s.best.high)+")";})));
+  var h='<div class="plan-head"><h2>Side by side</h2><p>All three plans keep the same Sunday arrival, two gym sessions and a Thursday departure. Travel numbers are rough estimates from your hotel; see each plan for the details.</p></div>';
+  h+='<div class="panel cmp"><table><thead><tr><th></th><th>Plan A</th><th>Plan B</th><th>Plan C</th></tr></thead><tbody>';
+  rows.forEach(function(r){h+='<tr>'+r.map(function(c){return '<td>'+esc(c)+'</td>';}).join("")+'</tr>';});
+  return h+'</tbody></table></div><div class="highlight"><b>Quick pick:</b> Plan B for variety without the long drive. Plan A for one big nature day. Plan C for the most relaxed pace.</div>';
+}
+
+(function(){
+  var h=(location.hash||"").replace("#","");
+  if(h==="plan-b")state.plan="b"; else if(h==="plan-c")state.plan="c"; else if(h==="compare")state.plan="cmp";
+  render();
+})();
+</script>
+</body>
+</html>
